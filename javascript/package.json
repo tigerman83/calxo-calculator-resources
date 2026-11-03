@@ -1,0 +1,22 @@
+{
+  "name": "@calxo/calculator-resources",
+  "version": "0.1.0",
+  "private": false,
+  "type": "module",
+  "exports": "./src/index.js",
+  "license": "MIT",
+  "homepage": "https://calxo.ai/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tigerman83/calxo-calculator-resources.git",
+    "directory": "javascript"
+  },
+  "description": "Open-source calculator formulas, reusable calculation examples, unit conversions, and tests from Calxo AI.",
+  "engines": {
+    "node": "22.x || 24.x"
+  },
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/index.js && node --check tests/calculators.test.js && node --check ../examples/usage.js"
+  }
+}

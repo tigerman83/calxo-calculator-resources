@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use these calculator resources, please cite the repository."
+title: "Calxo Calculator Resources"
+version: 0.1.0
+date-released: 2026-11-03
+repository-code: https://github.com/tigerman83/calxo-calculator-resources
+url: https://calxo.ai/
+authors:
+  - name: Calxo AI
+license: MIT
+abstract: >-
+  Standalone JavaScript calculator formulas, calculation examples, unit conversions,
+  and tests for practical calculations.
