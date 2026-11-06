@@ -1,6 +1,9 @@
 node_modules/
 coverage/
 dist/
+*.tgz
+datasets/conversion-reference/dataset-metadata.json
+datasets/conversion-reference/kernel-metadata.json
 *.log
 .DS_Store
 Thumbs.db

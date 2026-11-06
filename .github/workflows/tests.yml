@@ -29,3 +29,11 @@ jobs:
       - run: npm test
         working-directory: javascript
       - run: node examples/usage.js
+      - run: node scripts/build-conversion-dataset.mjs
+      - run: python3 scripts/build-conversion-notebook.py
+      - run: git diff --exit-code -- datasets/conversion-reference
+      - run: mkdir -p dist
+      - run: npm pack --pack-destination ../dist
+        working-directory: javascript
+      - run: npm run test:package
+        working-directory: javascript

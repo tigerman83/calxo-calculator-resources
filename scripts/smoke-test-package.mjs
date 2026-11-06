@@ -1,0 +1,34 @@
+import assert from "node:assert/strict";
+import { execFileSync } from "node:child_process";
+import { mkdtemp, readFile, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const packageDir = fileURLToPath(new URL("../javascript/", import.meta.url));
+const metadata = JSON.parse(await readFile(path.join(packageDir, "package.json"), "utf8"));
+const archive = process.argv[2] || fileURLToPath(new URL(`../dist/${metadata.name.replace(/^@/, "").replace("/", "-")}-${metadata.version}.tgz`, import.meta.url));
+const registryRelease = archive === "--registry";
+const installTarget = registryRelease ? `${metadata.name}@${metadata.version}` : path.resolve(archive);
+const sandbox = await mkdtemp(path.join(tmpdir(), "calxo-package-smoke-"));
+await writeFile(path.join(sandbox, "package.json"), JSON.stringify({ private: true, type: "module" }));
+// Invoke npm's JS CLI directly so Windows does not require shell interpolation.
+const npmCli = process.env.npm_execpath || path.join(path.dirname(process.execPath), "node_modules/npm/bin/npm-cli.js");
+execFileSync(process.execPath, [npmCli, "install", "--ignore-scripts", "--no-audit", "--no-fund", installTarget], { cwd: sandbox, stdio: "inherit" });
+const code = `import assert from 'node:assert/strict';
+import * as api from ${JSON.stringify(metadata.name)};
+assert.equal(Object.keys(api).length, 7);
+const close = (a,b) => assert.ok(Math.abs(a-b) < 1e-9);
+assert.equal(api.percentageOf(15,240),36);
+assert.equal(api.percentageChange(80,100),25);
+close(api.compoundInterest({principal:1000,annualRatePercent:5,years:2,compoundsPerYear:1}),1102.5);
+close(api.convertLength(10,'nmi','km'),18.52);
+close(api.convertSpeed(22,'yd/s','mph'),45);
+close(api.convertTemperature(-10,'C','F'),14);
+close(api.machToKilometersPerSecond(2,343),0.686);
+assert.throws(()=>api.percentageChange(0,10),RangeError);
+console.log('Installed package: all seven exports and zero-baseline validation passed.');`;
+await writeFile(path.join(sandbox, "smoke.mjs"), code);
+execFileSync(process.execPath, ["smoke.mjs"], { cwd: sandbox, stdio: "inherit" });
+assert.ok(await readFile(path.join(sandbox, "node_modules", metadata.name, "LICENSE"), "utf8"));
+console.log("Smoke-test directory:", sandbox);

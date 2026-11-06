@@ -1,0 +1,13 @@
+{
+  "case_id": "Unique deterministic case identifier.",
+  "quantity": "length or speed.",
+  "input_value": "Non-negative input magnitude in from_unit.",
+  "from_unit": "Case-sensitive source unit symbol.",
+  "to_unit": "Case-sensitive destination unit symbol.",
+  "expected_numerator": "Exact rational result numerator, stored as a decimal integer string in JSON.",
+  "expected_denominator": "Exact positive rational result denominator, stored as a decimal integer string in JSON.",
+  "expected_value": "Floating-point approximation of numerator divided by denominator, not a measurement.",
+  "absolute_tolerance": "Absolute tolerance for binary floating-point comparisons.",
+  "relative_tolerance": "Relative tolerance for binary floating-point comparisons.",
+  "source_url": "Primary reference for the unit definitions. Generated cases are authored by Calxo, not supplied by that organization."
+}

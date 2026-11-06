@@ -45,7 +45,20 @@ These selected tools are available on the website. Their complete implementation
 
 ## Install and use
 
-Supports Node.js 22 and 24. No package registry installation is required; use a checkout of this repository.
+Supports Node.js 22 and 24. Install the [npm package](https://www.npmjs.com/package/@rakeshvetal/calculator-resources):
+
+```sh
+npm install @rakeshvetal/calculator-resources
+```
+
+```js
+import { convertLength, convertSpeed } from "@rakeshvetal/calculator-resources";
+
+convertLength(10, "nmi", "km"); // approximately 18.52
+convertSpeed(22, "yd/s", "mph"); // approximately 45
+```
+
+For development, use a checkout of this repository.
 
 From the repository root, import the standalone source directly. No third-party runtime dependencies are needed.
 
@@ -116,5 +129,9 @@ Bug reports, corrected formulas, clearer assumptions, and focused test cases are
 Code is released under the [MIT License](LICENSE). See [CITATION.cff](CITATION.cff) for citation metadata. The license applies to this standalone repository only; it does not apply to Calxo.ai's website or private production source.
 
 ## Related formula data
+
+The independently authored [conversion reference dataset](datasets/conversion-reference/README.md) includes 612 synthetic length and speed cases, exact rational expected values, primary definition references, and a runnable Python notebook. It is a compact teaching and validation resource, separate from the wider formula archive below.
+
+The [npm release](https://www.npmjs.com/package/@rakeshvetal/calculator-resources) is version 0.1.0. The [Kaggle dataset](https://www.kaggle.com/datasets/rakeshvetal83/calxo-unit-conversion-reference-cases) provides the conversion reference data and MIT notebook download. A separately hosted [executed Kaggle notebook](https://www.kaggle.com/code/rakeshvetal83/validate-calxo-unit-conversions) is available under Apache 2.0. See [npm release instructions](docs/npm-release.md) and [Kaggle release instructions](docs/kaggle-release.md).
 
 The companion [Calxo Formula Library](https://github.com/tigerman83/calxo-formula-library) contains structured formula data, worked examples and data dictionaries. That dataset has its own reuse terms; this repository supplies independently written executable examples under MIT.

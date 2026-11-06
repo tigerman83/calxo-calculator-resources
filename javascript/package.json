@@ -1,9 +1,15 @@
 {
-  "name": "@calxo/calculator-resources",
+  "name": "@rakeshvetal/calculator-resources",
   "version": "0.1.0",
   "private": false,
   "type": "module",
   "exports": "./src/index.js",
+  "files": ["src/", "README.md", "LICENSE"],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": ["calculator", "unit-conversion", "percentage", "compound-interest", "calxo"],
   "license": "MIT",
   "homepage": "https://calxo.ai/",
   "repository": {
@@ -17,6 +23,8 @@
   },
   "scripts": {
     "test": "node --test",
+    "test:package": "node ../scripts/smoke-test-package.mjs",
+    "prepack": "npm run check && npm test",
     "check": "node --check src/index.js && node --check tests/calculators.test.js && node --check ../examples/usage.js"
   }
 }
