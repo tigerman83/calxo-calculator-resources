@@ -29,6 +29,7 @@ jobs:
       - run: npm test
         working-directory: javascript
       - run: node examples/usage.js
+      - run: node scripts/test-speed-demo.mjs
       - run: node scripts/build-conversion-dataset.mjs
       - run: python3 scripts/build-conversion-notebook.py
       - run: git diff --exit-code -- datasets/conversion-reference

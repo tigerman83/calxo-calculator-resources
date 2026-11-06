@@ -28,6 +28,8 @@ These links point to the matching live calculator pages verified during preparat
 
 For worked unit-cancellation examples and the assumptions behind Mach conversion, see [conversion examples](docs/conversion-examples.md).
 
+The [standalone speed demonstration](examples/speed-conversion-demo/README.md) includes editable yd/s and mph conversion, unit cancellation, reverse conversion and an average-speed example. Open its `index.html` in a browser; it has no build step or third-party dependencies.
+
 ## More interactive calculators on Calxo AI
 
 These selected tools are available on the website. Their complete implementations are not included in this source package.

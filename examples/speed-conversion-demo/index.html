@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yards per second and mph, explained | Calxo</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="converter">
+    <p class="eyebrow">CALXO · WORKED CONVERSION</p>
+    <h1>See where the units go.</h1>
+    <p class="intro">Convert yards per second and miles per hour, then follow the calculation one step at a time.</p>
+    <form id="conversion-form" novalidate>
+      <div class="fields">
+        <div><label for="speed">Speed</label><input id="speed" type="number" min="0" step="any" inputmode="decimal" value="22" aria-describedby="input-help error"></div>
+        <div><label for="direction">Conversion</label><select id="direction"><option value="yds-mph">yd/s → mph</option><option value="mph-yds">mph → yd/s</option></select></div>
+      </div>
+      <p id="input-help" class="hint">Enter a finite, non-negative speed magnitude. Fractional values are welcome.</p>
+      <p id="error" class="error" role="alert" hidden></p>
+      <div class="actions"><button type="submit">Calculate</button><button id="reverse" type="button" class="secondary">Reverse this result</button></div>
+    </form>
+    <section class="result" aria-labelledby="result-heading" aria-live="polite" aria-atomic="true">
+      <h2 id="result-heading">Converted speed</h2>
+      <p class="answer"><output id="answer" for="speed direction">45</output> <span id="result-unit">mph</span></p>
+      <p id="rounding-note" class="hint">Displayed to at most 6 decimal places.</p>
+    </section>
+    <section class="explanation" aria-labelledby="explanation-heading">
+      <h2 id="explanation-heading">Follow the units</h2>
+      <p id="formula" class="formula"></p>
+      <dl><div><dt>Calculation value before display rounding</dt><dd id="raw-result"></dd></div><div><dt>Definitions</dt><dd>1 mile = 1,760 international yards<br>1 hour = 3,600 seconds</dd></div></dl>
+      <p class="hint">The conversion definitions are exact. JavaScript uses binary floating-point arithmetic; the digits shown do not establish the precision of a measured speed. Reverse uses the calculation value, rather than the rounded display.</p>
+    </section>
+    <aside><h2>Average speed is not peak speed</h2><p>100 yards in 12.5 seconds is an average of 8 yd/s, or approximately 16.36 mph. It does not describe the runner's speed at every moment.</p><button type="button" class="example" id="sports-example">Try the 100-yard example</button></aside>
+    <footer><p>For another interactive reference, open Calxo's <a href="https://calxo.ai/tools/yards-per-second-to-miles-per-hour" target="_blank" rel="noopener noreferrer">yards per second to mph converter</a>.</p><p class="hint">Authored by Calxo AI. Standalone educational example. MIT license.</p></footer>
+  </main>
+</body>
+</html>
